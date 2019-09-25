@@ -5,3 +5,7 @@ lib
 venv
 .DS_Store
 *.jpg
+openseadragon
+templates
+__*
+app.py
