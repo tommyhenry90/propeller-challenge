@@ -16,11 +16,17 @@ class ImageSplitter:
         self.tiles = []
 
     def load_image(self, filename, directory):
-        self.img = cv.imread(directory + "/" + filename)
+        if directory:
+            self.img = cv.imread(directory + "/" + filename)
+        else:
+            self.img = cv.imread(filename)
         return self.img
 
     def save_image(self, img, level, x, y):
-        sub_sub_directory = self.directory + "/" + self.sub_directory + "/" + str(level)
+        if self.directory:
+            sub_sub_directory = self.directory + "/" + self.sub_directory + "/" + str(level)
+        else:
+            sub_sub_directory = self.sub_directory + "/" + str(level)
         if not os.path.exists(sub_sub_directory):
             os.makedirs(sub_sub_directory)
         name = str(x) + "_" + str(y) + ".jpg"
@@ -33,8 +39,12 @@ class ImageSplitter:
 
     # TODO downsize original images first before tiling to avoid pixelation on higher levels
     def tile_image(self, tile_size=256, num_levels=9):
-        if not os.path.exists(self.directory + "/" + self.sub_directory):
-            os.makedirs(self.directory + "/" + self.sub_directory)
+        if self.directory:
+            sub_directory_path = self.directory + "/" + self.sub_directory
+        else:
+            sub_directory_path = self.sub_directory
+        if not os.path.exists(sub_directory_path):
+            os.makedirs(sub_directory_path)
         rows, cols, _channels = map(int, self.img.shape)
         num_cols = math.ceil(cols/tile_size)
         num_rows = math.ceil(rows / tile_size)
@@ -47,7 +57,10 @@ class ImageSplitter:
         return True
 
     def recombine_tiles(self, level, num_x, num_y):
-        sub_sub_directory = self.directory + "/" + self.sub_directory + "/" + str(level)
+        if self.directory:
+            sub_sub_directory = self.directory + "/" + self.sub_directory + "/" + str(level)
+        else:
+            sub_sub_directory = self.sub_directory + "/" + str(level)
         previous_rows = []
         for x in range(num_x):
             next_row = []

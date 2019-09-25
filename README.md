@@ -2,8 +2,9 @@
 
 ## Installation
 To install dependencies:
+first activate virtual environment (I used python 3.7), then:
 <code>
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 </code>
 
 To run:
