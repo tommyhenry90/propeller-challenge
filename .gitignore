@@ -3,7 +3,6 @@ bin
 lib
 venv
 .DS_Store
-*.jpg
 openseadragon
 templates
 __*
