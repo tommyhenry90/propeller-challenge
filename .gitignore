@@ -1,6 +1,5 @@
 .idea
 bin
-images
 lib
 venv
 .DS_Store
@@ -9,3 +8,4 @@ openseadragon
 templates
 __*
 app.py
+pyvenv.cfg
