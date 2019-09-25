@@ -34,6 +34,6 @@ to optimise for different applications
 they look very pixelated - should change method to fix this -> downsize first
 then tile
 * With more time I would write more tests to ensure running effectively
- - test against different filetypes
- - test with really large file sizes
+    * test against different filetypes
+    * test with really large file sizes
  
