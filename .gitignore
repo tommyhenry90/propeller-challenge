@@ -8,4 +8,4 @@ templates
 __*
 app.py
 pyvenv.cfg
-test_images/image_pyramid
+test_images/image_pyramid/*
